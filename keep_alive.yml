@@ -1,0 +1,15 @@
+name: Keep Alive Streamlit App
+
+on:
+  schedule:
+    # Runs every 5 minutes
+    - cron: '*/5 * * * *'
+
+jobs:
+  keep-alive:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Send Keep Alive Ping
+        run: |
+          curl -m 10 https://yashwanthtatineni.streamlit.app/ || echo "Ping failed"
